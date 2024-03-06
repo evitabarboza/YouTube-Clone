@@ -1,0 +1,28 @@
+.user-profile {
+    padding: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.user-info div {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info h3 {
+    margin: 0;
+}
+
+.user-info p {
+    margin: 5px 0;
+}
