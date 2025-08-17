@@ -1,5 +1,8 @@
 .play-video {
     flex-basis: 69%;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
 }
 
 .play-video iframe {
@@ -11,6 +14,7 @@
     margin-top: 10px;
     font-weight: 600;
     font-size: 22px;
+    color: var(--text-color);
 }
 
 .play-video-info {
@@ -20,7 +24,7 @@
     flex-wrap: wrap;
     margin-top: 10px;
     font-size: 14px;
-    color: #5a5a5a;
+    color: var(--secondary-text-color);
 }
 
 .play-video-info img {
@@ -37,7 +41,7 @@
 .play-video hr {
     border: 0;
     height: 1px;
-    background: #ccc;
+    background: var(--border-color);
     margin: 10px 0;
 }
 
@@ -59,14 +63,14 @@
 }
 
 .publisher div p {
-    color: #000;
+    color: var(--text-color);
     font-weight: 600;
     font-size: 18px;
 }
 
 .publisher div span {
     font-size: 13px;
-    color: #5a5a5a;
+    color: var(--secondary-text-color);
 }
 
 .publisher button {
@@ -82,17 +86,18 @@
 .vid-description {
      padding-left: 55px;
      margin: 15px 0;
+     color: var(--text-color);
 }
 
 .vid-description p{
     font-size: 14px;
     margin-bottom: 5px;
-    color: #5a5a5a;
+    color: var(--secondary-text-color);
 }
 
 .vid-description h4 {
     font-size: 14px;
-    color: #5a5a5a;
+    color: var(--secondary-text-color);
     margin-top: 15px;
 }
 
@@ -100,6 +105,7 @@
     display: flex;
     align-items: flex-start;
     margin: 20px 0;
+    color: var(--text-color);
 }
 
 .comment img {
@@ -111,11 +117,12 @@
 .comment h3 {
     font-size: 14px;
     margin-bottom: 2px;
+    color: var(--text-color);
 }
 
 .comment h3 span {
     font-size: 12px;
-    color: #5a5a5a;
+    color: var(--secondary-text-color);
     font-weight: 500;
     margin-left: 8px;
 }
@@ -125,6 +132,7 @@
     align-items: center;
     margin: 8px 0;
     font-size: 14px;
+    color: var(--secondary-text-color);
 }
 
 .comment-action img {
@@ -135,7 +143,7 @@
 
 .comment-action span {
     margin-right: 20px;
-    color: #5a5a5a;
+    color: var(--secondary-text-color);
 }
 
 .subscribe-btn {

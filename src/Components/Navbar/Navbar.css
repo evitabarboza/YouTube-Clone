@@ -2,7 +2,8 @@ nav {
     padding: 10px 2%;
     justify-content: space-between;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    background: #fff;
+    background: var(--bg-color);   /* ✅ use theme variable */
+    color: var(--text-color);      /* ✅ text adapts */
     top: 0;
     z-index: 1000;
     position: sticky;
@@ -18,10 +19,11 @@ nav {
 }
 
 .nav-middle .search-box {
-    border: 1px solid #ccc;
+    border: 1px solid var(--text-color); 
     margin-right: 15px;
     padding: 8px 12px;
     border-radius: 25px;
+    background: var(--bg-color);          
 }
 
 .nav-middle .search-box input {
@@ -29,10 +31,12 @@ nav {
     border: 0;
     outline: 0;
     background: transparent;
+    color: var(--text-color);            
 }
 
 .nav-middle .search-box img {
     width: 15px;
+    filter: invert(var(--icon-invert, 0)); 
 }
 
 .nav-right img {
@@ -45,18 +49,31 @@ nav {
     border-radius: 50%;
 }
 
+.theme-toggle {
+    margin-left: 10px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* ✅ Responsive */
 @media (max-width: 900px) {
-    .menu-icon{
+    .menu-icon {
         display: none;
     }
     .nav-right img {
         display: none;
     }
-    .nav-right .user-icon{
+    .nav-right .user-icon {
         display: block;
         width: 30px;
     }
-    .logo{
+    .logo {
         width: 90px;
     }
     .nav-middle .search-box input {

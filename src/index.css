@@ -18,3 +18,19 @@ img {
     display: flex;
     align-items: center;
 }
+
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+  --secondary-text-color: #555;
+  --border-color: #ccc;
+  --icon-invert: 0;
+}
+
+.dark {
+  --bg-color: #181818;
+  --text-color: #f9f9f9;
+  --secondary-text-color: #aaa;
+  --border-color: #333;
+  --icon-invert: 1;
+}
