@@ -150,20 +150,21 @@
   padding: 8px 16px;
   border: none;
   border-radius: 20px;
-  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  color: white;
+  background-color: #cc0000;
+  transition: background-color 0.3s;
 }
 
-.subscribe-btn.subscribe {
-  background-color: rgb(169, 10, 10);
-  color: white;
+.subscribe-btn.subscribed {
+  background-color: #555;
 }
 
-.subscribe-btn.unsubscribe {
-  background-color: gray;
-  color: white;
+.subscribe-btn:hover {
+  opacity: 0.9;
 }
+
 
 @media (max-width: 900px) {
     .play-video{

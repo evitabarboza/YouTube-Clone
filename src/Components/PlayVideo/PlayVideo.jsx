@@ -15,7 +15,17 @@ const PlayVideo = () => {
   const [apiData, setApiData] = useState(null);
   const [channelData, setChannelData] = useState(null);
   const [commentData, setCommentData] = useState([]);
-  const [subscribed, setSubscribed] = useState(false);
+  const [subscribed, setSubscribed] = useState(
+    () => JSON.parse(localStorage.getItem(`subscribed_${videoId}`)) || false
+  );
+
+  const handleSubscribe = () => {
+    setSubscribed(prev => {
+      localStorage.setItem(`subscribed_${videoId}`, JSON.stringify(!prev));
+      return !prev;
+    });
+  };
+
 
   // Fetch video details
   const fetchVideoData = async () => {
@@ -89,9 +99,13 @@ const PlayVideo = () => {
           <p>{apiData?.snippet?.channelTitle || ""}</p>
           <span>{channelData ? value_converter(channelData.statistics.subscriberCount) : ""} Subscribers</span>
         </div>
-        <button onClick={() => setSubscribed(!subscribed)}>
-          {subscribed ? "Unsubscribed" : "Subscribe"}
+        <button
+          className={`subscribe-btn ${subscribed ? "subscribed" : ""}`}
+          onClick={handleSubscribe}
+        >
+          {subscribed ? "Subscribed" : "Subscribe"}
         </button>
+
       </div>
 
       <div className="vid-description">

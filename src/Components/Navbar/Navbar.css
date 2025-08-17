@@ -1,9 +1,10 @@
+/* Base Navbar styles remain the same */
 nav {
     padding: 10px 2%;
     justify-content: space-between;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    background: var(--bg-color);   /* ✅ use theme variable */
-    color: var(--text-color);      /* ✅ text adapts */
+    background: var(--bg-color);
+    color: var(--text-color);
     top: 0;
     z-index: 1000;
     position: sticky;
@@ -23,7 +24,9 @@ nav {
     margin-right: 15px;
     padding: 8px 12px;
     border-radius: 25px;
-    background: var(--bg-color);          
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
 }
 
 .nav-middle .search-box input {
@@ -31,12 +34,13 @@ nav {
     border: 0;
     outline: 0;
     background: transparent;
-    color: var(--text-color);            
+    color: var(--text-color);
 }
 
 .nav-middle .search-box img {
     width: 15px;
-    filter: invert(var(--icon-invert, 0)); 
+    margin-left: 8px;
+    filter: invert(var(--icon-invert, 0));
 }
 
 .nav-right img {
@@ -61,22 +65,55 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* ✅ Responsive */
+/* Responsive improvements */
 @media (max-width: 900px) {
     .menu-icon {
-        display: none;
+        display: block; /* Hamburger visible */
     }
-    .nav-right img {
-        display: none;
+
+    .nav-right img:not(.user-icon) {
+        display: none; /* Hide other icons */
     }
+
     .nav-right .user-icon {
-        display: block;
         width: 30px;
     }
+
     .logo {
         width: 90px;
     }
+
+    .nav-middle .search-box {
+        flex: 1;
+        max-width: 100%;
+    }
+
     .nav-middle .search-box input {
-        width: 100px;
+        width: 100%; /* Take full width */
+    }
+
+    .nav-left, .nav-middle, .nav-right {
+        align-items: center;
+    }
+
+    .nav-left, .nav-right {
+        gap: 10px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 500px) {
+    .nav-middle .search-box input {
+        width: 80px;
+        font-size: 14px;
+    }
+
+    .nav-left .logo {
+        width: 70px;
+    }
+
+    .theme-toggle {
+        padding: 4px 6px;
+        font-size: 14px;
     }
 }

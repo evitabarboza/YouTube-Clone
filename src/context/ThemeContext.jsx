@@ -1,12 +1,17 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  // Initialize theme from localStorage, default to 'light'
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
 
+  // Apply theme class to <html> immediately
   useEffect(() => {
-    document.documentElement.className = theme; // add 'light' or 'dark' to <html>
+    document.documentElement.className = theme;
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
