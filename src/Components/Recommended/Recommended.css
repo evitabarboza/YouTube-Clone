@@ -28,3 +28,9 @@
     margin-bottom: 5px;
     color: rgb(151, 151, 151);
 }
+
+@media (max-width: 900px) {
+    .recommended{
+        flex-basis: 100%;
+    }
+}

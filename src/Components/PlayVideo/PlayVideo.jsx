@@ -5,12 +5,12 @@ import dislike from '../../assets/dislike.png';
 import share from '../../assets/share.png';
 import save from '../../assets/save.png';
 import { API_KEY, value_converter } from '../../data';
+import user_profile from '../../assets/user_profile.jpg';
 import moment from 'moment';
 import { useParams } from 'react-router-dom';
 
 const PlayVideo = () => {
-
-  const { videoId } = useParams()
+  const { videoId } = useParams();
 
   const [apiData, setApiData] = useState(null);
   const [channelData, setChannelData] = useState(null);
@@ -82,7 +82,9 @@ const PlayVideo = () => {
       <hr />
 
       <div className="publisher">
-        <img src={channelData?.snippet?.thumbnails?.default?.url || ""} alt="Channel" />
+        {channelData?.snippet?.thumbnails?.default?.url && (
+          <img src={channelData.snippet.thumbnails.default.url} alt="Channel" />
+        )}
         <div>
           <p>{apiData?.snippet?.channelTitle || ""}</p>
           <span>{channelData ? value_converter(channelData.statistics.subscriberCount) : ""} Subscribers</span>
@@ -101,31 +103,33 @@ const PlayVideo = () => {
       <h4>{apiData ? value_converter(apiData.statistics.commentCount) : "0"} Comments</h4>
 
       {commentData.map((item, index) => {
-  const topComment = item.snippet.topLevelComment.snippet;
-  return (
-    <div key={index} className="comment">
-      <img
-        src={topComment?.authorProfileImageUrl || "/default-avatar.png"} 
-        alt={topComment?.authorDisplayName || "User"}
-      />
-      <div>
-        <h3>
-          {topComment.authorDisplayName}
-          <span> {moment(topComment.publishedAt).fromNow()}</span>
-        </h3>
-        <p dangerouslySetInnerHTML={{ __html: topComment.textDisplay }} />
-        <div className="comment-action">
-          <img src={like} alt="Like" />
-          <span>{value_converter(topComment.likeCount)}</span>
-          <img src={dislike} alt="Dislike" />
-        </div>
-      </div>
-    </div>
-  );
-})}
+        const topComment = item.snippet.topLevelComment.snippet;
+        return (
+          <div key={index} className="comment">
+            {topComment?.authorProfileImageUrl && (
+              <img
+                src={topComment?.authorProfileImageUrl || user_profile}
+                alt={topComment?.authorDisplayName || "User"}
+                onError={(e) => { e.target.src = user_profile; }} // fallback if URL fails
+              />
 
 
-
+            )}
+            <div>
+              <h3>
+                {topComment.authorDisplayName}
+                <span> {moment(topComment.publishedAt).fromNow()}</span>
+              </h3>
+              <p dangerouslySetInnerHTML={{ __html: topComment.textDisplay }} />
+              <div className="comment-action">
+                <img src={like} alt="Like" />
+                <span>{value_converter(topComment.likeCount)}</span>
+                <img src={dislike} alt="Dislike" />
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
